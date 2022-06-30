@@ -11,3 +11,6 @@ weights: output/yolov3_mobilenet_v1_roadsign/model_final
 YOLOv3Loss:
   ignore_thresh: 0.7
   label_smooth: true
+
+LearningRate:
+  base_lr: 0.000025
