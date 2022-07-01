@@ -15,7 +15,7 @@ PP-YOLOE is an excellent single-stage anchor-free model based on PP-YOLOv2, surp
   <img src="../../docs/images/ppyoloe_map_fps.png" width=500 />
 </div>
 
-PP-YOLOE-l achieves 51.4 mAP on COCO test-dev2017 dataset with 78.1 FPS on Tesla V100. While using TensorRT FP16, PP-YOLOE-l can be further accelerated to 149.2 FPS. PP-YOLOE-s/m/x also have excellent accuracy and speed performance, which can be found in [Model Zoo](#Model-Zoo)
+PP-YOLOE-l achieves 51.6 mAP on COCO test-dev2017 dataset with 78.1 FPS on Tesla V100. While using TensorRT FP16, PP-YOLOE-l can be further accelerated to 149.2 FPS. PP-YOLOE-s/m/x also have excellent accuracy and speed performance, which can be found in [Model Zoo](#Model-Zoo)
 
 PP-YOLOE is composed of following methods:
 - Scalable backbone and neck
@@ -43,15 +43,7 @@ PP-YOLOE is composed of following methods:
 **Notes:**
 
 - PP-YOLOE is trained on COCO train2017 dataset and evaluated on val2017 & test-dev2017 dataset，all the model weights are trained for **300 epoches**.
-- The model weights in the table of Comprehensive Metrics are **the same as** that in the original Model Zoo, and evaluated on **val2017**. To reproduce the metrics, just modify the setting of `nms` in [ppyoloe_crn.yml](_base_/ppyoloe_crn.yml):
-  ```
-  nms:
-    name: MultiClassNMS
-    nms_top_k: 10000
-    keep_top_k: 300
-    score_threshold: 0.01
-    nms_threshold: 0.7
-  ```
+- The model weights in the table of Comprehensive Metrics are **the same as** that in the original Model Zoo, and evaluated on **val2017**.
 - PP-YOLOE used 8 GPUs for mixed precision training, if **GPU number** or **mini-batch size** is changed, **learning rate** should be adjusted according to the formula **lr<sub>new</sub> = lr<sub>default</sub> * (batch_size<sub>new</sub> * GPU_number<sub>new</sub>) / (batch_size<sub>default</sub> * GPU_number<sub>default</sub>)**.
 - PP-YOLOE inference speed is tesed on single Tesla V100 with batch size as 1, **CUDA 10.2**, **CUDNN 7.6.5**, **TensorRT 6.0.1.8** in TensorRT mode.
 - Refer to [Speed testing](#Speed-testing) to reproduce the speed testing results of PP-YOLOE.
@@ -227,6 +219,17 @@ Model | AP | AP<sub>50</sub>
 - Here, we use [VisDrone](https://github.com/VisDrone/VisDrone-Dataset) dataset, and to detect 9 objects including `person, bicycles, car, van, truck, tricyle, awning-tricyle, bus, motor`.
 - Above models trained using official default config, and load pretrained parameters on COCO dataset.
 - *Due to the limited time, more verification results will be supplemented in the future. You are also welcome to contribute to PP-YOLOE*
+
+
+### Feature Models
+
+The PaddleDetection team provides configs and weights of various feature detection models based on PP-YOLOE, which users can download for use:
+
+|Scenarios | Related Datasets | Links|
+| :--------: | :---------: | :------: |
+|Pedestrian Detection | CrowdHuman | [pphuman](../pphuman) |
+|Vehicle Detection | BDD100K，UA-DETRAC | [ppvehicle](../ppvehicle) |
+|Small Object Detection | VisDrone | [visdrone](../visdrone) |
 
 
 ## Appendix
