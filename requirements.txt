@@ -1,3 +1,4 @@
+numpy
 tqdm
 typeguard ; python_version >= '3.4'
 visualdl>=2.1.0 ; python_version <= '3.7'
