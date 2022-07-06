@@ -7,7 +7,7 @@ weights=https://paddledet.bj.bcebos.com/models/ppyoloe_crn_x_300e_coco.pdparams
 
 
 obj365模型推理 533MB
-python tools/infer.py
+python static/tools/infer.py
 -c static/configs/obj365/cascade_rcnn_dcnv2_se154_vd_fpn_gn_cas.yml
 -o use_gpu=true
 weights=weights/cascade_rcnn_dcnv2_se154_vd_fpn_gn_cas_obj365
