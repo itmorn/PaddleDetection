@@ -1,0 +1,25 @@
+python tools/infer.py
+-c configs/ppyoloe/ppyoloe_crn_x_300e_coco.yml
+-o use_gpu=true
+weights=https://paddledet.bj.bcebos.com/models/ppyoloe_crn_x_300e_coco.pdparams
+--infer_dir=/data/xiaofugui/yolo_v5_2022_6_27/yolov5/my_img
+--output_dir=output/aopeng
+
+
+obj365模型推理 533MB
+python tools/infer.py
+-c static/configs/obj365/cascade_rcnn_dcnv2_se154_vd_fpn_gn_cas.yml
+-o use_gpu=true
+weights=weights/cascade_rcnn_dcnv2_se154_vd_fpn_gn_cas_obj365
+--infer_dir=/data/xiaofugui/yolo_v5_2022_6_27/yolov5/my_img
+--output_dir=output/aopeng
+
+
+CascadeCARCNN-FPN-Dcnv2-Nonlocal ResNet200-vd推理 900MB
+python tools/infer.py
+-c static/configs/oidv5/cascade_rcnn_cls_aware_r200_vd_fpn_dcnv2_nonlocal_softnms.yml
+-o use_gpu=true
+weights=weights/oidv5_cascade_rcnn_cls_aware_r200_vd_fpn_dcnv2_nonlocal_softnms/
+--infer_dir=/data/xiaofugui/yolo_v5_2022_6_27/yolov5/my_img
+--output_dir=output/aopeng
+
