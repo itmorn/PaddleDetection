@@ -1,5 +1,5 @@
 可视化训练
-python -m paddle.distributed.launch --gpus 0,1 tools/train.py -c configs/yolov3/yolov3_mobilenet_v1_shengkai.yml --eval --use_vdl=true --vdl_log_dir=vdl_dir/scalar --save_prediction_only
+python -m paddle.distributed.launch --gpus 0,1 tools/train.py -c configs/yolov3/yolov3_mobilenet_v1_shengkai.yml --eval --use_vdl=true --vdl_log_dir=vdl_dir/scalar
 visualdl --logdir vdl_dir/scalar/ --host 0.0.0.0
 10.100.196.27:8040
 
@@ -20,6 +20,14 @@ python deploy/python/infer.py --model_dir=./output_inference/yolov3_mobilenet_v1
 
 
 更换PP-YOLOE-s训练
-python -m paddle.distributed.launch --gpus 0,1 tools/train.py -c configs/ppyoloe/ppyoloe_crn_s_300e_shengkai.yml --eval --use_vdl=true --vdl_log_dir=vdl_dir/scalar --save_prediction_only
+python tools/train.py -c configs/ppyoloe/ppyoloe_crn_s_300e_shengkai.yml --use_vdl=true --vdl_log_dir=vdl_dir/scalar
 visualdl --logdir vdl_dir/scalar/ --host 0.0.0.0
 10.100.196.27:8040
+
+推理
+python tools/infer.py
+-c configs/ppyoloe/ppyoloe_crn_s_300e_shengkai.yml
+-o use_gpu=true
+weights=output/ppyoloe_crn_s_300e_shengkai/47.pdparams
+--infer_dir=/data/xiaofugui/yolo_v5_2022_6_27/yolov5/my_img
+--output_dir=output_img/shengkai

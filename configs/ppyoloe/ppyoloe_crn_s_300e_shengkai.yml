@@ -6,8 +6,6 @@ _BASE_: [
   './_base_/ppyoloe_reader.yml',
 ]
 
-log_iter: 100
-snapshot_epoch: 10
 weights: output/ppyoloe_crn_s_300e_coco/model_final
 
 pretrain_weights: https://paddledet.bj.bcebos.com/models/pretrained/CSPResNetb_s_pretrained.pdparams
@@ -15,8 +13,9 @@ depth_mult: 0.33
 width_mult: 0.50
 
 TrainReader:
-  batch_size: 16
+  batch_size: 32
 
 LearningRate:
   base_lr: 0.005
 
+worker_num: 10
